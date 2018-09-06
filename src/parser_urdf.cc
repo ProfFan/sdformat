@@ -2285,7 +2285,7 @@ void CreateGeometry(TiXmlElement* _elem, urdf::GeometrySharedPtr _geometry)
       type = "box";
       {
         urdf::BoxConstSharedPtr box =
-          urdf::dynamic_pointer_cast<urdf::Box>(_geometry);
+          urdf::static_pointer_cast<urdf::Box>(_geometry);
         int sizeCount = 3;
         double sizeVals[3];
         sizeVals[0] = box->dim.x;
@@ -2299,7 +2299,7 @@ void CreateGeometry(TiXmlElement* _elem, urdf::GeometrySharedPtr _geometry)
       type = "cylinder";
       {
         urdf::CylinderConstSharedPtr cylinder =
-          urdf::dynamic_pointer_cast<urdf::Cylinder>(_geometry);
+          urdf::static_pointer_cast<urdf::Cylinder>(_geometry);
         geometryType = new TiXmlElement(type);
         AddKeyValue(geometryType, "length", Values2str(1, &cylinder->length));
         AddKeyValue(geometryType, "radius", Values2str(1, &cylinder->radius));
@@ -2309,7 +2309,7 @@ void CreateGeometry(TiXmlElement* _elem, urdf::GeometrySharedPtr _geometry)
       type = "sphere";
       {
         urdf::SphereConstSharedPtr sphere =
-          urdf::dynamic_pointer_cast<urdf::Sphere>(_geometry);
+          urdf::static_pointer_cast<urdf::Sphere>(_geometry);
         geometryType = new TiXmlElement(type);
         AddKeyValue(geometryType, "radius", Values2str(1, &sphere->radius));
       }
@@ -2318,7 +2318,7 @@ void CreateGeometry(TiXmlElement* _elem, urdf::GeometrySharedPtr _geometry)
       type = "mesh";
       {
         urdf::MeshConstSharedPtr mesh =
-          urdf::dynamic_pointer_cast<urdf::Mesh>(_geometry);
+          urdf::static_pointer_cast<urdf::Mesh>(_geometry);
         geometryType = new TiXmlElement(type);
         AddKeyValue(geometryType, "scale", Vector32Str(mesh->scale));
         // do something more to meshes

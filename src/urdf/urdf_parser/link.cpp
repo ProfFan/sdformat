@@ -557,21 +557,22 @@ bool exportMesh(Mesh &m, TiXmlElement *xml)
 bool exportGeometry(GeometrySharedPtr &geom, TiXmlElement *xml)
 {
   TiXmlElement *geometry_xml = new TiXmlElement("geometry");
-  if (urdf::dynamic_pointer_cast<Sphere>(geom))
+  
+  if (geom->type == SPHERE)
   {
-    exportSphere((*(urdf::dynamic_pointer_cast<Sphere>(geom).get())), geometry_xml);
+    exportSphere((*(urdf::static_pointer_cast<Sphere>(geom).get())), geometry_xml);
   }
-  else if (urdf::dynamic_pointer_cast<Box>(geom))
+  else if (geom->type == BOX)
   {
-    exportBox((*(urdf::dynamic_pointer_cast<Box>(geom).get())), geometry_xml);
+    exportBox((*(urdf::static_pointer_cast<Box>(geom).get())), geometry_xml);
   }
-  else if (urdf::dynamic_pointer_cast<Cylinder>(geom))
+  else if (geom->type == CYLINDER)
   {
-    exportCylinder((*(urdf::dynamic_pointer_cast<Cylinder>(geom).get())), geometry_xml);
+    exportCylinder((*(urdf::static_pointer_cast<Cylinder>(geom).get())), geometry_xml);
   }
-  else if (urdf::dynamic_pointer_cast<Mesh>(geom))
+  else if (geom->type == MESH)
   {
-    exportMesh((*(urdf::dynamic_pointer_cast<Mesh>(geom).get())), geometry_xml);
+    exportMesh((*(urdf::static_pointer_cast<Mesh>(geom).get())), geometry_xml);
   }
   else
   {

@@ -341,7 +341,7 @@ namespace sdf
   template<typename Type>
   bool Param::IsType() const
   {
-    return this->dataPtr->value.type() == boost::typeindex::type_id<Type>().type_info();
+    return this->dataPtr->value.type() == boost::typeindex::type_id<Type>();
   }
 }
 
