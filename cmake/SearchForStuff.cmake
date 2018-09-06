@@ -139,7 +139,7 @@ endmacro()
 # Set a variable for generating ProjectConfig.cmake
 set(IGNITION-MATH_REQUIRED_MAJOR_VERSION 4)
 find_package(ignition-math${IGNITION-MATH_REQUIRED_MAJOR_VERSION}
-  PATHS ${CMAKE_SOURCE_DIR}/../../Release/ignition-math/lib
+  PATHS ${CMAKE_SOURCE_DIR}/../../Release/ignition-math/lib/cmake
   QUIET
 )
 if (NOT ignition-math${IGNITION-MATH_REQUIRED_MAJOR_VERSION}_FOUND)
