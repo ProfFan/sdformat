@@ -138,7 +138,10 @@ endmacro()
 # Find ignition math
 # Set a variable for generating ProjectConfig.cmake
 set(IGNITION-MATH_REQUIRED_MAJOR_VERSION 4)
-find_package(ignition-math${IGNITION-MATH_REQUIRED_MAJOR_VERSION} QUIET)
+find_package(ignition-math${IGNITION-MATH_REQUIRED_MAJOR_VERSION}
+  PATHS ${CMAKE_SOURCE_DIR}/../../Release/ignition-math/lib
+  QUIET
+)
 if (NOT ignition-math${IGNITION-MATH_REQUIRED_MAJOR_VERSION}_FOUND)
   message(STATUS "Looking for ignition-math4-config.cmake - not found")
   find_package(ignition-math3 QUIET)

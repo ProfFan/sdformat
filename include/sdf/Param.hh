@@ -264,7 +264,7 @@ namespace sdf
   {
     try
     {
-      if (boost::typeindex::type_id<T>().type_info() == boost::typeindex::type_id<bool>().type_info() && this->dataPtr->typeName == "string")
+      if (boost::typeindex::type_id<T>() == boost::typeindex::type_id<bool>() && this->dataPtr->typeName == "string")
       {
         std::stringstream ss;
         ss << this->dataPtr->value;
@@ -286,7 +286,7 @@ namespace sdf
         }
         tmp >> _value;
       }
-      else if (boost::typeindex::type_id<T>().type_info() == this->dataPtr->value.type())
+      else if (boost::typeindex::type_id<T>() == this->dataPtr->value.type())
       {
 #if BOOST_VERSION < 105800
         _value = boost::get<T>(this->dataPtr->value);
@@ -307,7 +307,7 @@ namespace sdf
              << this->dataPtr->key << "] "
              << "whose type is["
              << this->dataPtr->typeName << "], to "
-             << "type[" << boost::typeindex::type_id<T>().type_info().name() << "]\n";
+             << "type[" << boost::typeindex::type_id<T>().name() << "]\n";
       return false;
     }
     return true;
@@ -330,7 +330,7 @@ namespace sdf
              << this->dataPtr->key << "] "
              << "whose type is["
              << this->dataPtr->typeName << "], to "
-             << "type[" << boost::typeindex::type_id<T>().type_info().name() << "]\n";
+             << "type[" << boost::typeindex::type_id<T>().name() << "]\n";
       return false;
     }
 
